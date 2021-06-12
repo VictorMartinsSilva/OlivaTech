@@ -1,0 +1,80 @@
+﻿@model IEnumerable<OlivaTech.Site.Models.Curso>
+
+@{
+    ViewData["Title"] = "Cursos";
+}
+
+<div class="col-6">
+    <form method="get" asp-action="Index">
+        <p>
+            <a class="btn btn-outline-oliva" asp-action="Create" supress-by-claim-name="Cursos" supress-by-claim-value="Create">Registrar Curso</a>
+        </p>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar" value="@ViewData["TermSearch"]" name="searchTerm">
+            <input type="submit" class="btn btn-outline-oliva" id="btn-default" value="Buscar">
+        </div>
+    </form>
+</div>
+<table class="table rounded shadow">
+    <thead class="thead-oliva">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CursoTipo.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponivel)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody class="tbody-oliva">
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CursoTipo.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UF)
+            </td>
+            <td>
+
+                @{
+                    if (item.Disponivel == true)
+                    {
+                        <p class="text-success">Inscrições Abertas</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">Inscrições Fechadas</p>
+                    }
+                }
+
+            </td>
+            
+            <td>
+                <a class="btn btn-oliva-pencil" asp-action="Edit" asp-route-id="@item.CursoId" supress-by-claim-name="Cursos" supress-by-claim-value="Edit"></a> 
+                <a class="btn btn-oliva-search" asp-action="Details" asp-route-id="@item.CursoId"supress-by-claim-name="Cursos" supress-by-claim-value="Details"></a> 
+                <a class="btn btn-oliva-trash" asp-action="Delete" asp-route-id="@item.CursoId"supress-by-claim-name="Cursos" supress-by-claim-value="Delete"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

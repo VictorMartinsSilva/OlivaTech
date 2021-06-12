@@ -1,0 +1,58 @@
+﻿@model OlivaTech.Site.Models.Curso
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+<div class="card-internal col-10 shadow card-center">
+    <div class="card-title-internal">
+        <h2>Curso</h2>
+    </div>
+    <dl class="row">
+        <dt class="text-oliva col-sm-2">
+            @Html.DisplayNameFor(model => model.CursoTipo.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CursoTipo.Nome)
+        </dd>
+        <dt class="text-oliva col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="text-oliva col-sm-2">
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt class="text-oliva col-sm-2">
+            @Html.DisplayNameFor(model => model.UF)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UF)
+        </dd>
+        <dt class="text-oliva col-sm-2">
+            @Html.DisplayNameFor(model => model.Disponivel)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var item = Model;
+                if (item.Disponivel == true)
+                {
+                    <p class="text-success">Inscrições Abertas</p>
+                }
+                else
+                {
+                    <p class="text-danger">Inscrições Fechadas</p>
+                }
+            }
+        </dd>
+    </dl>
+    <div class="text-center mb-3">
+        <a class="btn btn-outline-oliva" asp-action="Edit" asp-route-id="@Model.CursoId" supress-by-claim-name="Cursos" supress-by-claim-value="Edit">Editar</a> 
+        <a class="btn btn-outline-oliva" asp-action="Index">Voltar</a>
+    </div>
+</div>
+
+
