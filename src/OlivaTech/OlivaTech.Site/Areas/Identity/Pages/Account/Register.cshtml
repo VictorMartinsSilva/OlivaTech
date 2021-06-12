@@ -1,0 +1,67 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<div class="card-internal card-center col-4 shadow">
+    <div class="card-title-internal">
+        <h2>Cadastro</h2>
+    </div>
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <div class="form-group">
+            <label asp-for="Input.Nome"></label>
+            <input asp-for="Input.Nome" class="form-control" />
+            <span asp-validation-for="Input.Nome" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Sobrenome"></label>
+            <input asp-for="Input.Sobrenome" class="form-control" />
+            <span asp-validation-for="Input.Sobrenome" class="text-danger"></span>
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.ConfirmPassword"></label>
+            <input asp-for="Input.ConfirmPassword" class="form-control" />
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.CEP"></label>
+            <input asp-for="Input.CEP" name="Input.CEP" value="" class="form-control" />
+            <span asp-validation-for="Input.CEP" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Cidade"></label>
+            <input asp-for="Input.Cidade" name="Input.Cidade" value="" class="form-control" />
+            <span asp-validation-for="Input.Cidade" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Bairro"></label>
+            <input asp-for="Input.Bairro" name="Input.Bairro" value="" class="form-control" />
+            <span asp-validation-for="Input.Bairro" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.UF"></label>
+            <input asp-for="Input.UF" name="Input.UF" value="" class="form-control" />
+            <span asp-validation-for="Input.UF" class="text-danger"></span>
+        </div>
+        <div class="text-center" id="btn-register">
+            <button type="submit" class="btn btn-outline-oliva">Cadastrar</button>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
