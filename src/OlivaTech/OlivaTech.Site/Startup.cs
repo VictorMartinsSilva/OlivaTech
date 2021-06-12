@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OlivaTech.Site.Data;
+using OlivaTech.Site.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +31,14 @@ namespace OlivaTech.Site
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ContextDb>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddDefaultIdentity<IdentityUserCustom>(options => options.SignIn.RequireConfirmedAccount = false)
+               .AddRoles<IdentityRole>()
+               .AddEntityFrameworkStores<ApplicationDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
