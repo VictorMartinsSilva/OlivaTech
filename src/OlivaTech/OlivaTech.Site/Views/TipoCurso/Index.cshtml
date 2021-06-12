@@ -1,0 +1,33 @@
+﻿@model IEnumerable<OlivaTech.Site.Models.CursoTipo>
+
+@{
+    ViewData["Title"] = "Formações";
+}
+
+<p>
+    <a class="btn btn-outline-oliva" asp-action="Create">Registrar formação</a>
+</p>
+<table class="table table-oliva rounded shadow">
+    <thead class="thead-oliva">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="tbody-oliva">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <a class="btn btn-oliva-pencil" asp-action="Edit" asp-route-id="@item.CursoTipoId"></a> 
+                <a class="btn btn-oliva-search" asp-action="Details" asp-route-id="@item.CursoTipoId"></a> 
+                <a class="btn btn-oliva-trash" asp-action="Delete" asp-route-id="@item.CursoTipoId"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

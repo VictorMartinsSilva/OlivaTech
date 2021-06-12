@@ -1,0 +1,32 @@
+﻿@model OlivaTech.Site.Models.CursoTipo
+
+@{
+    ViewData["Title"] = "Editar Formação";
+}
+
+<div class="card-internal card-center col-4 shadow">
+    <div class="card-title-internal">
+        <h2>Formação</h2>
+    </div>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="CursoTipoId" />
+        <div class="form-group">
+            <label asp-for="Nome" class="control-label"></label>
+            <select asp-for="Nome" class="form-control single-select">
+                <option value="">[Selecione]</option>
+                <option value="Técnico">Técnico</option>
+                <option value="Bacharelado">Bacharelado</option>
+                <option value="Pós-Graduação">Pós-Graduação</option>
+            </select>
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" value="Salvar" class="btn btn-outline-oliva" />
+            <a class="btn btn-outline-oliva" asp-action="Index">Retornar</a>
+        </div>
+    </form>
+</div>
+
+<!--_ValidationScriptsPartial retirado po funcionamento incorreto.-->
+
