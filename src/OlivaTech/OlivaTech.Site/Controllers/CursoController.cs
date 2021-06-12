@@ -26,9 +26,6 @@ namespace OlivaTech.Site.Controllers
             _context = context;
         }
 
-        //Há dois Index, pois, um realiza o filtro de visualização, onde, somente o Admin e CEO pode visualizar os cursos com "incrições fechadas, e o outro realiza o filtro de busca
-       //por Formação e Cidade.
-
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index(string searchTerm)
@@ -75,7 +72,7 @@ namespace OlivaTech.Site.Controllers
         public IActionResult Create()
         {
             var tipoCursos = _context.CursoTipos.OrderBy(t => t.Nome).ToList();
-            tipoCursos.Insert(0, new CursoTipo() { CursoTipoId = 0, Nome = "[Selecione o passageiro]" });
+            tipoCursos.Insert(0, new CursoTipo() { CursoTipoId = 0, Nome = "[Selecione a Formação]" });
             ViewBag.TipoCursos = tipoCursos;
 
             return View();
