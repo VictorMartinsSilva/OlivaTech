@@ -6,7 +6,26 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+.nav-link-internal {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
 
+.nav-link-internal:hover{
+    text-decoration: none;
+    color: #ccc;
+}
+
+#oliva-tech{
+    color: #fff;
+}
+.navbar {
+    background-color: #510075;
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -68,4 +87,127 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+
+/*CÓDIGOS CRIADOS*/
+
+.card-internal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    width: 100%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+
+.btn-outline-oliva {
+    color: #510075;
+    border-color: #510075;
+    text-transform: uppercase;
+}
+
+.btn-outline-oliva:hover {
+    color: #fff;
+    background-color: #510075;
+    border-color: #510075;
+}
+
+
+.card-title-internal {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #510075;
+}
+
+.thead-oliva {
+    color: #fff;
+    background-color: #510075;
+}
+
+.tbody-oliva {
+    background-color: #fffeff;
+}
+
+.register {
+    color: #510075;
+}
+.register:hover{
+    color: #d575ff;
+    text-decoration: none;
+}
+
+.text-oliva {
+    color: #510075;
+}
+
+#btn-register{
+    margin-bottom: 5%;
+}
+
+.btn-oliva-pencil {
+    border-color: #510075;
+    background-image: url(img/pencil_purple.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 42px;
+    height: 38px;
+}
+
+.btn-oliva-pencil:hover{
+    background-color: #510075;
+    border-color: #510075;
+    background-image: url(img/pencil_white.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 42px;
+    height: 38px;
+}
+
+.btn-oliva-search {
+    border-color: #510075;
+    background-image: url(img/search_purple.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 42px;
+    height: 38px;
+}
+
+.btn-oliva-search:hover{
+    background-color: #510075;
+    border-color: #510075;
+    background-image: url(img/search_white.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 42px;
+    height: 38px;
+}
+
+.btn-oliva-trash {
+    border-color: #510075;
+    background-image: url(img/trash_purple.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 42px;
+    height: 38px;
+}
+
+.btn-oliva-trash:hover{
+    background-color: #510075;
+    border-color: #510075;
+    background-image: url(img/trash_white.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 42px;
+    height: 38px;
+}
+
+.card-center {
+    margin: 0 auto;
 }
