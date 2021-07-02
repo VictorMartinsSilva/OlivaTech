@@ -26,13 +26,15 @@ namespace OlivaTech.Site.Models
         [StringLength(2, MinimumLength = 2, ErrorMessage = "O {0} é obrigatório conter de {2} a {1} caracteres.")]
         public string UF { get; set; }
 
-        [Required(ErrorMessage = "A {0} é obrigatória.")]
-        [Display(Name = "Disponibilidade")]
-        public Boolean Disponivel { get; set; }
+        [Required(ErrorMessage = "É obrigatório informar se o curso está {0}")]
+        [Display(Name = "Disponível")]
+        public bool Disponivel { get; set; }
 
-        
+
         public CursoTipo CursoTipo { get; set; }
         public long CursoTipoId { get; set; }
+
+        public List<Oferta> Ofertas { get; set; }
 
     }
 }
