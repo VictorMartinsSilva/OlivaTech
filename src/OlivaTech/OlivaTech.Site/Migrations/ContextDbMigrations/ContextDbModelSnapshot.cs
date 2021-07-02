@@ -50,6 +50,35 @@ namespace OlivaTech.Site.Migrations.ContextDbMigrations
                     b.HasIndex("CursoTipoId");
 
                     b.ToTable("Cursos");
+
+                    b.HasData(
+                        new
+                        {
+                            CursoId = 1L,
+                            Cidade = "Volta Redonda",
+                            CursoTipoId = 2L,
+                            Disponivel = true,
+                            Nome = "Sistema de Informação",
+                            UF = "RJ"
+                        },
+                        new
+                        {
+                            CursoId = 2L,
+                            Cidade = "Serrana",
+                            CursoTipoId = 1L,
+                            Disponivel = true,
+                            Nome = "Tecnologias para Aplicações Web",
+                            UF = "SP"
+                        },
+                        new
+                        {
+                            CursoId = 3L,
+                            Cidade = "Volta Redonda",
+                            CursoTipoId = 3L,
+                            Disponivel = false,
+                            Nome = "Informática",
+                            UF = "RJ"
+                        });
                 });
 
             modelBuilder.Entity("OlivaTech.Site.Models.CursoTipo", b =>
@@ -67,6 +96,74 @@ namespace OlivaTech.Site.Migrations.ContextDbMigrations
                     b.HasKey("CursoTipoId");
 
                     b.ToTable("CursoTipos");
+
+                    b.HasData(
+                        new
+                        {
+                            CursoTipoId = 1L,
+                            Nome = "Pós-Graduação"
+                        },
+                        new
+                        {
+                            CursoTipoId = 2L,
+                            Nome = "Bacharelado"
+                        },
+                        new
+                        {
+                            CursoTipoId = 3L,
+                            Nome = "Técnico"
+                        },
+                        new
+                        {
+                            CursoTipoId = 4L,
+                            Nome = "Mestrado"
+                        });
+                });
+
+            modelBuilder.Entity("OlivaTech.Site.Models.Oferta", b =>
+                {
+                    b.Property<long>("OfertaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("CursoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Disponivel")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Preco")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.HasKey("OfertaId");
+
+                    b.HasIndex("CursoId");
+
+                    b.ToTable("Ofertas");
+
+                    b.HasData(
+                        new
+                        {
+                            OfertaId = 1L,
+                            CursoId = 1L,
+                            Disponivel = true,
+                            Preco = 306.76m
+                        },
+                        new
+                        {
+                            OfertaId = 2L,
+                            CursoId = 2L,
+                            Disponivel = true,
+                            Preco = 158.58m
+                        },
+                        new
+                        {
+                            OfertaId = 3L,
+                            CursoId = 3L,
+                            Disponivel = false,
+                            Preco = 230.5m
+                        });
                 });
 
             modelBuilder.Entity("OlivaTech.Site.Models.Curso", b =>
@@ -78,6 +175,22 @@ namespace OlivaTech.Site.Migrations.ContextDbMigrations
                         .IsRequired();
 
                     b.Navigation("CursoTipo");
+                });
+
+            modelBuilder.Entity("OlivaTech.Site.Models.Oferta", b =>
+                {
+                    b.HasOne("OlivaTech.Site.Models.Curso", "Curso")
+                        .WithMany("Ofertas")
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Curso");
+                });
+
+            modelBuilder.Entity("OlivaTech.Site.Models.Curso", b =>
+                {
+                    b.Navigation("Ofertas");
                 });
 
             modelBuilder.Entity("OlivaTech.Site.Models.CursoTipo", b =>

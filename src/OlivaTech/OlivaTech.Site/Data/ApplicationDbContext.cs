@@ -14,6 +14,5 @@ namespace OlivaTech.Site.Data
         {
 
         }
-        
     }
 }
