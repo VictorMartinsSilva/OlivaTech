@@ -31,11 +31,11 @@ namespace OlivaTech.Site.Controllers
         public async Task<IActionResult> Index(string searchTerm)
         {
             var user = await _userManager.GetUserAsync(User);
-            
+
             Console.WriteLine(User.GetType());
 
             ViewData["TermSearch"] = searchTerm;
-            var curso = from c in _context.Cursos select c; 
+            var curso = from c in _context.Cursos select c;
 
             if (!String.IsNullOrEmpty(searchTerm))
             {
